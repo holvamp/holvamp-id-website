@@ -1,0 +1,33 @@
+<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+    <!-- Navbar -->
+    <%- include('layouts/navbar-layout') %>
+    <!-- End of Navbar -->
+
+    <!--================================
+    =            Page Title            =
+    =================================-->
+    <section class="container my-5 text-center">
+        <div class="container mb-4 col-lg-9">
+            <h1 class="text-center">
+                Ayo Gabung!
+            </h1>
+            <p class="text-center">
+                Menjadi bagian dari komunitas Holvamp bersama saling belajar dan berkontribusi Kenapa tidak? there's nothing to lose!
+            </p>
+        </div>
+        <!--====  End of Page Title  ====-->
+        <!--==== Content ====-->
+        <div class="container d-flex flex-column col-lg-3">
+            <% socials_media.forEach(social => { %>
+                <a href="<%= social.to %> " target="blank" class="btn btn-rounded-icon bg-primary">
+                    <i class="<%= social.b_icon %>"></i>
+                    <%= social.page %>  
+                </a>
+            <% }) %>
+        </div>
+    </section>
+    <!--==== End of content ====-->
+
+    <!--==== Footer ====-->
+    <%- include('layouts/footer-layout') %>
+    <!--====  End of Footer  ====--> 

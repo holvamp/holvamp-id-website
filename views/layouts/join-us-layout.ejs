@@ -1,0 +1,26 @@
+<!--=================================
+=            Join-us            =
+==================================-->
+<section class="call-to-action-app section bg-blue">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2>Ayo bergabung!</h2>
+				<p>Menjadi bagian dari komunitas <a href="/">Holvamp</a> bersama saling belajar dan berkontribusi<br>
+				Kenapa tidak? there's nothing to lose!
+				</p>
+				<ul class="list-inline">
+					<% socials_media.forEach(social_media => { %>
+						<li class="list-inline-item">
+							<a href="<%= social_media.to %>" target="blank" class="btn btn-rounded-icon">
+								<i class="<%= social_media.b_icon %>"></i>
+								<%= social_media.page %> 
+							</a>
+						</li>
+					<% }) %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of Join-us  ====-->

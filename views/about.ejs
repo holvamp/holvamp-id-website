@@ -1,0 +1,135 @@
+<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+<!-- Navbar -->
+<%- include('layouts/navbar-layout') %>
+<!-- End of Navbar -->
+<!--================================
+=            Page Title            =
+=================================-->
+
+<section class="section page-title">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 m-auto">
+				<!-- Page Title -->
+				<h1>Tentang <a href="/">Holvamp</a></h1>
+				<!-- Page Description -->
+				<p>Hello World! <a href="/">Holvamp</a> menyediakan konten edukasi gratis khususnya pada bidang Web Development.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--====  End of Page Title  ====-->
+
+
+<!--===============================
+=            Our Story            =
+================================-->
+<section class="section about p-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 align-self-center">
+				<div class="content text-center text-lg-left">
+					<!-- Headline -->
+					<h2>Ini Cerita Kami.</h2>
+					<!-- Story -->
+					<p>Selalu ingin lebih baik dari hari kemarin, hari ini dunia sudah saling terhubung, mereka dari kalangan dan latar belakang apapun berhak mendapatkan edukasi yang baik, berkolaborasi untuk menciptakan sesuatu yang luar biasa itulah kenapa <a href="/">Holvamp</a> didirikan.</p>
+				</div>
+			</div>
+			<div class="col-lg-6 mt-4 mt-lg-0">
+				<!-- Story Image Slider -->
+				<div class="about-slider">
+					<!-- Story Image -->
+					<!-- <div class="item">
+						<img class="w-100" src="images/about/story-slider-01.jpg" alt="slider-image">
+					</div> -->
+					<!-- Story Image -->
+					<div class="item">
+						<img class="w-100" src="images/about/story-slider-02.jpg" alt="slider-image">
+					</div>
+					<!-- Story Image -->
+					<div class="item">
+						<img class="w-100" src="images/about/story-slider-03.jpg" alt="slider-image">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of Our Story  ====-->
+
+<!--================================
+=            Behind Story          =
+=================================-->
+<section class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title mb-0">
+					<h2>Kenapa Kami Mendirikan <a href="/">Holvamp</a></h2>
+					<p><a href="/">Holvamp</a> percaya bahwa edukasi untuk ilmu yang bermanfaat seharusnya mudah untuk diakses, diraih dan dipelajari oleh siapapun dari kalangan maupun dari latar belakang apapun.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of Behind Story  ====-->
+
+<!--================================
+=            Behind Story          =
+=================================-->
+<section class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title mb-0">
+					<h2>Yang Kami Lakukan</h2>
+					<p><a href="/">Holvamp</a> menyediakan konten edukasi gratis khususnya pada bidang Web Development. Karena kami percaya bahwa edukasi yang baik dan berkualiatas merupakan hak semua manusia.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of Behind Story  ====-->
+<!-- Team -->
+<section class="section investors">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h2>Pendiri <a href="<%= holvamp_icon_alt.to %>" target="blank"><%= holvamp_icon_alt.icon_title %> </a></h2>
+				</div>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center">
+			<div class="col-xl-4 col-lg-8 col-sm-8 text-center">
+				<div class="block text-center">
+					<!-- Founder Image -->
+					<div class="image shadow hover-zoom">
+						<a href="<%= author.to %>" target="blank">
+							<img class="img-fluid" src="<%= author.img %>" alt="<%= author.name %>" title="what's up?" >
+						</a>
+					</div>
+					<!-- Founder name -->
+					<a href="<%= author.to %>" target="blank">
+						<h3><%= author.name %></h3>
+					</a>
+					<!-- Founder description -->
+					<p><%= author.description %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End of Team -->
+<!--=====================================
+=            Section comment            =
+======================================-->
+<!--====  End of Section comment  ====-->
+<!-- JOIN-US -->
+<%- include('layouts/Join-us-layout') %>
+<!--=====================================
+=            Footer			            =
+======================================-->
+<%- include('layouts/footer-layout') %>
+<!--====  End of Footer  ====-->

@@ -1,0 +1,142 @@
+<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+<!-- Navbar -->
+<%- include('layouts/navbar-layout') %>
+<!-- End of Navbar -->
+  <!--====================================
+=            Single Article            =
+=====================================-->
+<section class="section blog-single">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 m-auto">
+				<!-- Single Post -->
+				<article class="single-post">
+					<!-- Post title -->
+					<div class="post-title text-center">
+						<h1><%= post_data.title %></h1>
+						<!-- Tags -->
+						<ul class="list-inline post-tag">
+							<li class="list-inline-item">
+								<img src="<%= post_data.author.image.url %>" alt="author-thumb">
+							</li>
+							<li class="list-inline-item">
+								<span><%= post_data.author.displayName%></span>
+							</li>
+							<li class="list-inline-item">
+								<span>Dipublikasi pada: <%= new Date(post_data.published).toISOString().split('T')[0] %></span>
+							</li>
+						</ul>
+					</div>
+					<!-- === Sharethis === -->
+					<div class="container mb-3">
+						<div class="row d-flex justify-content-center">
+							<div class="sharethis-inline-share-buttons"></div>
+						</div>
+					</div>
+					<!-- === End of sharethis -->
+					<div class="post-title text-center">
+						<ul class="list-inline post-tag">
+							<li class="list-inline-item">
+								<span>Terakhir disunting pada: <%= new Date(post_data.updated).toISOString().split('T')[0] %></span>
+							</li>
+						</ul>
+					</div>
+					<!-- Post body -->
+					<div class="post-body mt-5">
+						<!-- Paragrapgh -->
+						<p id="blog_paragraph" data-test-attr="<%= post_data.content %>"></p>
+					</div>
+				</article>		
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of Single Article  ====-->
+<!-- ==== Add Comment ====-->
+<!-- Form add comment -->
+<!-- <div class="container mb-5">
+	<hr>
+		<div class="row d-flex justify-content-center">
+			<h2>Komentar</h2>
+		</div>
+	<hr>
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="col-md-7">
+				<div class="shadow-sm p-3 bg-white rounded">
+					<h4 class="text-center">Tambah Komentar</h4>
+					<div class="d-flex flex-row mt-3"> 
+						<img src="https://i.imgur.com/jD4jCW9.png" width="40" height="40">
+						<div class="w-100 ml-2 comment-area"> <textarea class="form-control"></textarea>
+							<button class="btn btn-secondary btn-block mt-2 post-btn">Tambah</button> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+<!-- ==== End of Add Comment ====-->
+<!--==== article comments list ====-->
+<% const comments = comment_list.items %> 
+<% if (comments) { %>
+	<div class="container">
+		<hr>
+			<div class="row d-flex justify-content-center">
+				<h2>Komentar</h2>
+			</div>
+		<hr>
+	</div>
+	<% comments.forEach(comment => { %>
+		<div class="container mt-5">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-7">
+					<div class="shadow-sm p-3 bg-white rounded">
+						<div class="d-flex flex-row"> 
+							<img src="<%= comment.author.image.url %>" style="border-radius: 50% !important;" width="40" height="40">
+							<div class="mx-2 w-100">
+								<div>
+									<div> 
+										<span class="font-weight-bold name">
+										<%= comment.author.displayName %>
+										</span>
+										<small class="text-end">
+											<%= new Date(comment.updated).toISOString().split('T')[0] %>
+										</small>
+									</div> 
+								</div>
+								<p class="user-comment-text text-justify"><%= comment.content %> </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+	<% }) %>
+<% } %>
+</div>
+<!--==== End of article comments list ====-->
+<!-- ShareThis BEGIN -->
+<div class="container mb-5">
+	<hr>
+		<div class="row d-flex justify-content-center">
+			<h2>Tanggapanmu</h2>
+		</div>
+	<hr>
+	<div class="sharethis-inline-reaction-buttons"></div>
+	<div class="sharethis-inline-share-buttons"></div>
+</div>
+<!-- ShareThis END -->
+<!-- JOIN-US -->
+<%- include('layouts/Join-us-layout') %>
+<!--============================
+=            Footer            =
+=============================-->
+<!-- Blog DOM -->
+<script>
+	const blog_paragraph = document.getElementById('blog_paragraph');
+	const blog_paragraph_value = blog_paragraph.getAttribute('data-test-attr')
+	$('#blog_paragraph').append(blog_paragraph_value)
+</script>
+<!--==== Footer ====-->
+<%- include('layouts/footer-layout') %>
+<!--====  End of Footer  ====--> 
