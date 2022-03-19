@@ -52,7 +52,7 @@ p, li, blockquote, label {
   font-size: 16px;
   letter-spacing: 0;
   line-height: 25px;
-  color: #808080;
+  /* color: #808080; */
   margin-bottom: 0;
 }
 
@@ -67,7 +67,7 @@ cite {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #808080;
+  /* color: #808080; */
   line-height: 25px;
   font-size: 16px;
 }
@@ -261,7 +261,7 @@ textarea.form-control.main {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #808080;
+  /* color: #808080; */
   font-size: 14px;
 }
 
@@ -1437,7 +1437,7 @@ hr {
   text-align: center;
   border-color: transparent;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
-  color: #808080;
+  /* color: #808080; */
   transition: 0.3s ease-in;
 }
 .pagination-nav ul.pagination li a:hover {
@@ -1836,7 +1836,7 @@ hr {
   }
 }
 .coming-soon .block h3 {
-  color: #808080;
+  /* color: #808080; */
 }
 .coming-soon .block .count-down {
   margin-top: 70px;
