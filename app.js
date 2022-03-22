@@ -1,23 +1,24 @@
 // Local Module
-const {blog_resource, blog_posts_data} = require('./utils/fetch-blog')
-const {contact_us_connection} = require('./utils/contact-us-process')
+import { blog_resource } from './utils/fetch-blog';
+import { blog_posts_data } from './utils/fetch-blog';
+import { contact_us_connection } from './utils/contact-us-process';
 // Express
-const express = require('express');
+import express, { urlencoded } from 'express';
 const app = express();
 const PORT = process.env.PORT || 8080;
 // axios
-const axios = require('axios')
+import { get } from 'axios';
 const API_KEY = 'AIzaSyATggcpPcDwU6CX8vd1nGdSARnYDjp0WQ8';
 // HTML parser
 
 // Express view engine EJS.
-const expressLayouts = require('express-ejs-layouts');
+import expressLayouts from 'express-ejs-layouts';
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
 // built-in middleware.
 app.use(express.static('./public'));
-app.use(express.urlencoded({extended: true}));
+app.use(urlencoded({extended: true}));
 
 // === Routing Middleware. ===
 // == pages routes ==
@@ -144,11 +145,11 @@ app.get('/blogs', (req, res) => {
 app.get('/blogs/:id', (req, res) => {    
     const id_params = req.params.id
     // == fetch blog post resource ==
-    axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}?key=${API_KEY}`).then((response) => {
+    get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}?key=${API_KEY}`).then((response) => {
         const post_data = response.data;
         // == fetch blog post comments list ==
         // link didapat dari hateoas post resource
-        axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}/comments?key=${API_KEY}`).then(response => {
+        get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}/comments?key=${API_KEY}`).then(response => {
             const comment_list = response.data
             res.render('blog', {
                 layout: 'layouts/main-layout.ejs',
