@@ -53,69 +53,37 @@
 </section>
 <!--====  End of Single Article  ====-->
 <!-- ==== Add Comment ====-->
-<!-- Form add comment -->
-<!-- <div class="container mb-5">
+<div class="container">
 	<hr>
 		<div class="row d-flex justify-content-center">
 			<h2>Komentar</h2>
 		</div>
 	<hr>
-	<div class="container">
-		<div class="row d-flex justify-content-center">
-			<div class="col-md-7">
-				<div class="shadow-sm p-3 bg-white rounded">
-					<h4 class="text-center">Tambah Komentar</h4>
-					<div class="d-flex flex-row mt-3"> 
-						<img src="https://i.imgur.com/jD4jCW9.png" width="40" height="40">
-						<div class="w-100 ml-2 comment-area"> <textarea class="form-control"></textarea>
-							<button class="btn btn-secondary btn-block mt-2 post-btn">Tambah</button> 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-<!-- ==== End of Add Comment ====-->
-<!--==== article comments list ====-->
-<% const comments = comment_list.items %> 
-<% if (comments) { %>
-	<div class="container">
-		<hr>
-			<div class="row d-flex justify-content-center">
-				<h2>Komentar</h2>
-			</div>
-		<hr>
-	</div>
-	<% comments.forEach(comment => { %>
-		<div class="container mt-5">
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-7">
-					<div class="shadow-sm p-3 bg-white rounded">
-						<div class="d-flex flex-row"> 
-							<img src="<%= comment.author.image.url %>" style="border-radius: 50% !important;" width="40" height="40">
-							<div class="mx-2 w-100">
-								<div>
-									<div> 
-										<span class="font-weight-bold name">
-										<%= comment.author.displayName %>
-										</span>
-										<small class="text-end">
-											<%= new Date(comment.updated).toISOString().split('T')[0] %>
-										</small>
-									</div> 
-								</div>
-								<p class="user-comment-text text-justify"><%= comment.content %> </p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>			
-	<% }) %>
-<% } %>
 </div>
-<!--==== End of article comments list ====-->
-<!-- ShareThis BEGIN -->
+<div class="container">
+	<div id="disqus_thread"></div>
+</div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+	// Dynamic variables
+	const PAGE_URL = window.location.href
+	const PAGE_IDENTIFIER = PAGE_URL.split('/')[4];
+    var disqus_config = function () {
+		this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://holvamp-2.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- ==== End of Add Comment ====-->
+<!-- ShareThis TANGGAPAN BEGIN -->
 <div class="container mb-5">
 	<hr>
 		<div class="row d-flex justify-content-center">
@@ -125,7 +93,7 @@
 	<div class="sharethis-inline-reaction-buttons"></div>
 	<div class="sharethis-inline-share-buttons"></div>
 </div>
-<!-- ShareThis END -->
+<!-- ShareThis TANGGAPAN END -->
 <!-- JOIN-US -->
 <%- include('layouts/Join-us-layout') %>
 <!--============================
