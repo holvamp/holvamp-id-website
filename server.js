@@ -4,7 +4,7 @@ const {contact_us_connection} = require('./utils/contact-us-process')
 // Express
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 // axios
 const axios = require('axios')
 const API_KEY = 'AIzaSyATggcpPcDwU6CX8vd1nGdSARnYDjp0WQ8';
@@ -210,6 +210,6 @@ app.use('/', (req, res) => {
     })
 })
 
-app.listen(port, () => {
-    console.log(`App is listening to port: ${port}`)
+app.listen(PORT, () => {
+    console.log(`App is listening to PORT: ${PORT}`)
 });
