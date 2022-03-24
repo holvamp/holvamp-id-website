@@ -62,11 +62,12 @@ const socials_media = [
     },
     {
         to: 'https://www.instagram.com/holvamp/',
-        // bootstrap 5 icons
+        // bootstrap 5 icons.
         b_icon:'bi bi-instagram',
         page: 'Instagram'
     },
     {
+        // invite to Holvamp Discord server.
         to: 'https://discord.gg/k3c5EDtBnU',
         b_icon:'bi bi-discord',
         page: 'Discord'

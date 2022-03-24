@@ -2,7 +2,7 @@
 <!-- Navbar -->
 <%- include('layouts/navbar-layout') %>
 <!-- End of Navbar -->
-  <!--====================================
+<!--====================================
 =            Single Article            =
 =====================================-->
 <section class="section blog-single">
@@ -43,7 +43,7 @@
 					</div>
 					<!-- Post body -->
 					<div class="post-body mt-5">
-						<!-- Paragrapgh -->
+						<!-- Paragrapgh | DOM EJS -->
 						<p class="overflow-auto" id="blog_paragraph" data-test-attr="<%= post_data.content %>"></p>
 					</div>
 				</article>		
@@ -52,7 +52,7 @@
 	</div>
 </section>
 <!--====  End of Single Article  ====-->
-<!-- ==== Add Comment ====-->
+<!-- ==== Add Comment | Disqus ====-->
 <div class="container">
 	<hr>
 		<div class="row d-flex justify-content-center">
@@ -63,6 +63,7 @@
 <div class="container">
 	<div id="disqus_thread"></div>
 </div>
+<!-- Disqus -->
 <script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -82,8 +83,9 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- End of Disqus -->
 <!-- ==== End of Add Comment ====-->
-<!-- ShareThis TANGGAPAN BEGIN -->
+<!-- ==== ShareThis TANGGAPAN BEGIN ==== -->
 <div class="container mb-5">
 	<hr>
 		<div class="row d-flex justify-content-center">
@@ -93,18 +95,19 @@
 	<div class="sharethis-inline-reaction-buttons"></div>
 	<div class="sharethis-inline-share-buttons"></div>
 </div>
-<!-- ShareThis TANGGAPAN END -->
+<!-- ==== ShareThis TANGGAPAN END ====-->
 <!-- JOIN-US -->
 <%- include('layouts/join-us-layout') %>
 <!--============================
 =            Footer            =
 =============================-->
-<!-- Blog DOM -->
+<!-- ==== Blog DOM ==== -->
 <script>
 	const blog_paragraph = document.getElementById('blog_paragraph');
 	const blog_paragraph_value = blog_paragraph.getAttribute('data-test-attr')
 	$('#blog_paragraph').append(blog_paragraph_value)
 </script>
+<!-- ==== End of Blog DOM ==== -->
 <!--==== Footer ====-->
 <%- include('layouts/footer-layout') %>
 <!--====  End of Footer  ====--> 
