@@ -151,11 +151,11 @@ app.get('/about', (req, res) => {
 // ===========
 // == Blogs ==
 // ===========
-// Architecture:
-// 1. blogs
-// 2. blogs > blogs/{course-page}
-// 3. blogs/:id 
 
+// Architecture:
+// 1. /blogs
+// 2. /blogs > /blogs/{course-page}
+// 3. /blogs/:id 
 // === Holvamp's API soon ===
 // = Holvamp's course =
 const courses = [
@@ -172,21 +172,24 @@ const courses = [
 // 1. blogs
 // Blogs Page
 // fetch blog api
+// == Courses pages ==
+// !!! Holvamp's API (soon) !!!
 app.get('/blogs', (req, res) => {
     res.render('blogs',{
         layout: 'layouts/main-layout.ejs',
-        title: "Blog",
+        title: "Blogs",
         pages,
         socials_media,
         holvamp_icon_alt,
         products,
         author,
-        courses
+        courses // !!! Holvamp's API (soon) !!!
     })
 })
 
 // 1. blogs
 // 2. blogs > blogs/{course-page}
+// !!! Holvamp's API (soon) !!!
 // == Course page ==
 app.get('/blogs/html-course', (req, res) => {
     res.render('html-course', {
@@ -199,7 +202,7 @@ app.get('/blogs/html-course', (req, res) => {
         author,
         blog_resource,
         blog_posts_data,
-        courses
+        courses // !!! Holvamp's API (soon) !!!
     });
 })
 
@@ -212,13 +215,14 @@ app.get('/blogs/:id', (req, res) => {
     // == fetch blog post resource ==
     axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}?key=${API_KEY}`).then((response) => {
         const post_data = response.data;
+        console.log(post_data)
         // == fetch blog post comments list ==
         // link didapat dari hateoas post resource
         axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}/comments?key=${API_KEY}`).then(response => {
             const comment_list = response.data
             res.render('blog-post', {
                 layout: 'layouts/main-layout.ejs',
-                title: "Blog",
+                title: `${post_data.title}`,
                 pages,
                 socials_media,
                 holvamp_icon_alt,
