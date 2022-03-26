@@ -46,7 +46,7 @@
                   <li class="list-inline-item">
                     <a href="/blogs/<%= post.id %>"><%= post.author.displayName %></a>
                   </li>
-                  <li class="list-inline-item">
+                  <li class="list-inline-item text-muted">
                     Dipublikasi pada: <%= new Date(post.published).toISOString().split('T')[0] %>
                   </li>
                 </ul>
@@ -57,7 +57,6 @@
             </article>
           </div>
           <% }) %>
-          
         </div>
       </div>
     </section>

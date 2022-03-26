@@ -1,5 +1,10 @@
+<!-- 
+=====
+Blogs mengambil data dari API local (sementara)
+=====
+ -->
+
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
-<% const blogs = blog_resource[0] %>
 <!-- Navbar -->
 <%- include('layouts/navbar-layout') %>
 <!-- End of Navbar -->
@@ -11,15 +16,15 @@
       <div class="row">
         <div class="col-sm-8 m-auto">
           <!-- Page Title -->
-          <h1><%= blogs.name %></h1>
+          <h1>Holvamp Blogs</h1>
           <!-- Page Description -->
           <p> 
-            <%= blogs.description %>
+
           </p>
-          <p class="blockquote mt-2"> 
+          <p class="blockquote mt-2 text-muted"> 
             Mau belajar apa hari ini?
           </p>
-          <small class="text-muted">Terakhir disunting pada: <%= new Date(blogs.updated).toISOString().split('T')[0] %> </small>
+          <small class="text-muted"></small>
         </div>
       </div>
     </div>

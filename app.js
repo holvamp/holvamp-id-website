@@ -181,7 +181,6 @@ app.get('/blogs', (req, res) => {
         holvamp_icon_alt,
         products,
         author,
-        blog_resource,
         courses
     })
 })
