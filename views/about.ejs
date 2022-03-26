@@ -94,16 +94,11 @@
 <!-- Team -->
 <section class="section investors">
 	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<div class="section-title">
-					<h2>Pendiri <a href="<%= holvamp_icon_alt.to %>" target="blank"><%= holvamp_icon_alt.icon_title %> </a></h2>
-				</div>
-			</div>
-		</div>
+		<h2 class="text-center">Team <a href="<%= holvamp_icon_alt.to %>" target="blank"><%= holvamp_icon_alt.icon_title %></a></h2>		
+		<hr>
 		<div class="row d-flex justify-content-center">
-			<div class="col-xl-4 col-lg-8 col-sm-8 text-center">
-				<div class="block text-center">
+			<div class="col-xl-4 col-lg-8 col-sm-8">
+				<div class="block">
 					<!-- Founder Image -->
 					<div class="image shadow hover-zoom">
 						<a href="<%= author.to %>" target="blank">
@@ -112,10 +107,11 @@
 					</div>
 					<!-- Founder name -->
 					<a href="<%= author.to %>" target="blank">
-						<h3><%= author.name %></h3>
+						<h2><%= author.name %></h2>
 					</a>
+					<cite>Founder</cite>
 					<!-- Founder description -->
-					<p><%= author.description %></p>
+					<p style="color: #808080;"><%= author.description %></p>
 				</div>
 			</div>
 		</div>
