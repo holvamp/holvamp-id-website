@@ -44,16 +44,38 @@ const pages = [
     },
 ]
 // == icons | socials media routes & icons ==
-// = socials media routes & icons =
+// = Author's socials media routes & icons =
 const author = {
     name: 'Akbar Angkasa',
     nickname: 'Abay',
     img:'/images/img/people/akbar-angkasa.jpg',
     description: 'Akrab dipanggil Abay manusia berusia 19 tahun berjabatan Mahasiswa pada sebuah politeknik negeri di Indonesia, memiliki minat pada dunia pemprograman khususnya pada bidang Web development.',
-    to: 'https://akbarangkasa.com/'
+    to: 'https://akbarangkasa.com/',
+    socials: [
+        {
+            page:'Instagram',
+            icon:'ti-instagram',
+            to:'https://www.instagram.com/angkasa_akbar/'
+        },
+        {
+            page:'Website',
+            icon:'ti-world',
+            to:'https://akbarangkasa.com/'
+        },
+        {
+            page:'Github',
+            icon:'ti-github',
+            to:'https://github.com/abay-2002'
+        },
+        {
+            page:'LinkedIn',
+            icon:'ti-linkedin',
+            to:'https://id.linkedin.com/in/akbar-angkasa-908a3317b'
+        },
+    ]
 }
 
-
+// == Holvamp's socials media ==
 const socials_media = [
     {
         to: 'https://www.youtube.com/channel/UCPTBQ8AxU-wsWVcdVgr55Yg',

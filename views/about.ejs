@@ -91,27 +91,31 @@
 	</div>
 </section>
 <!--====  End of Behind Story  ====-->
+<% const author_socials = author.socials %> 
 <!-- Team -->
 <section class="section investors">
 	<div class="container">
 		<h2 class="text-center">Team <a href="<%= holvamp_icon_alt.to %>" target="blank"><%= holvamp_icon_alt.icon_title %></a></h2>		
 		<hr>
+		<!-- Team -->
 		<div class="row d-flex justify-content-center">
 			<div class="col-xl-4 col-lg-8 col-sm-8">
 				<div class="block">
-					<!-- Founder Image -->
+					<!-- Teams Image -->
 					<div class="image shadow hover-zoom">
-						<a href="<%= author.to %>" target="blank">
-							<img class="img-fluid" src="<%= author.img %>" alt="<%= author.name %>" title="what's up?" >
-						</a>
+						<img class="img-fluid" src="<%= author.img %>" alt="<%= author.name %>" title="what's up?" >
 					</div>
-					<!-- Founder name -->
-					<a href="<%= author.to %>" target="blank">
-						<h2><%= author.name %></h2>
-					</a>
+					<!-- Teams name -->
+					<h2><%= author.name %></h2>
 					<cite>Founder</cite>
-					<!-- Founder description -->
+					<!-- Teams description -->
 					<p style="color: #808080;"><%= author.description %></p>
+					<!-- Teams Socials media -->
+					<ul class="list-inline social-links mt-2">
+						<% author_socials.forEach(social => { %>
+							<li class="list-inline-item"><a href="<%= social.to %>" target="blank"><i class="<%= social.icon %>"></i></a></li>
+						<% }) %>
+					</ul>
 				</div>
 			</div>
 		</div>
