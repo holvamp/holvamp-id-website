@@ -100,6 +100,7 @@ const socials_media = [
         page: 'Reddit'
     },
 ]
+
 // = icons =
 const holvamp_icon_alt = {
     icon:'holvamp-logo-alt.png',
@@ -107,6 +108,7 @@ const holvamp_icon_alt = {
     icon_alt: 'holvamp-logo',
     to:'/'
 }
+
 // == products ==
 const products = [
     {
@@ -118,7 +120,6 @@ const products = [
         page: 'Blogs'
     }
 ]
-
 
 // ==== Routing Middleware ====
 // Home Page
@@ -147,6 +148,28 @@ app.get('/about', (req, res) => {
     })
 })
 
+// ===========
+// == Blogs ==
+// ===========
+// Architecture:
+// 1. blogs
+// 2. blogs > blogs/{course-page}
+// 3. blogs/:id 
+
+// === Holvamp's API soon ===
+// = Holvamp's course =
+const courses = [
+    {
+        image_general:'images/blog/holvamp-course-banner.jpg', 
+        image_course: 'images/blog/html-course-banner.jpg',
+        course:'HTML Dasar',
+        to:'html-course',
+        by:'Holvamp',
+        desc: 'Belajar HTML Dasar sebagai pengetahuan yang wajib dikuasai sebelum lanjut belajar CSS, Javascript dan teknologi web lainnya.'
+    }
+]
+
+// 1. blogs
 // Blogs Page
 // fetch blog api
 app.get('/blogs', (req, res) => {
@@ -159,10 +182,31 @@ app.get('/blogs', (req, res) => {
         products,
         author,
         blog_resource,
-        blog_posts_data
+        courses
     })
 })
 
+// 1. blogs
+// 2. blogs > blogs/{course-page}
+// == Course page ==
+app.get('/blogs/html-course', (req, res) => {
+    res.render('html-course', {
+        layout: 'layouts/main-layout.ejs',
+        title: "Blog",
+        pages,
+        socials_media,
+        holvamp_icon_alt,
+        products,
+        author,
+        blog_resource,
+        blog_posts_data,
+        courses
+    });
+})
+
+// 1. blogs
+// 2. blogs > blogs/{course-page}
+// 3. blogs/:id
 // == Blog page ==
 app.get('/blogs/:id', (req, res) => {    
     const id_params = req.params.id
@@ -173,7 +217,7 @@ app.get('/blogs/:id', (req, res) => {
         // link didapat dari hateoas post resource
         axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}/comments?key=${API_KEY}`).then(response => {
             const comment_list = response.data
-            res.render('blog', {
+            res.render('blog-post', {
                 layout: 'layouts/main-layout.ejs',
                 title: "Blog",
                 pages,

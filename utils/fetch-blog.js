@@ -4,7 +4,7 @@ const axios = require('axios');
 // === Blogger-API | Fetch Blog Resources ===
 // = Blogger API Key =
 const API_KEY = 'AIzaSyATggcpPcDwU6CX8vd1nGdSARnYDjp0WQ8';
-const blog_resource_url = 'https://www.googleapis.com/blogger/v3/blogs/byurl?url=https://holvamp.blogspot.com/&key=';
+const blog_resource_url = 'https://www.googleapis.com/blogger/v3/blogs/byurl?url=https://holvamp-belajar-html.blogspot.com/&key=';
 const blog_resource = [];
 let fetch_blog_resource = () => {
   const result = axios.get(`${blog_resource_url}${API_KEY}`)

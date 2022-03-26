@@ -16,46 +16,49 @@
           <p> 
             <%= blogs.description %>
           </p>
+          <p class="blockquote mt-2"> 
+            Mau belajar apa hari ini?
+          </p>
           <small class="text-muted">Terakhir disunting pada: <%= new Date(blogs.updated).toISOString().split('T')[0] %> </small>
         </div>
       </div>
     </div>
   </section>
   <!--====  End of Page Title  ====-->
+  <% const holvamp_courses = courses %> 
   <section class="post-grid section pt-0">
   <div class="container">
     <div class="row">
-  <% const posts = blog_posts_data[0].items %>
-  <% posts.forEach(post => { %>
-      <div class="col-lg-4 col-md-4 col-sm-6">
-        <article class="post-sm">
-          <!-- Post Image -->
-          <div class="post-thumb">
-            <a href="/blogs/<%= post.id %>"><img class="w-100" src="images/blog/post-01.jpg" alt="Post-Image"></a>		
-          </div>
-          <!-- Post Title -->
-          <div class="post-title">
-            <h3><a href="/blogs/<%= post.id %>"><%= post.title %></a></h3>
-          </div>
-          <!-- Post Meta -->
-          <div class="post-meta">
-            <ul class="list-inline post-tag">
-              <li class="list-inline-item">
-                <img src="<%= post.author.image.url %>" alt="author-thumb">
-              </li>
-              <li class="list-inline-item">
-                <a href="/blogs/<%= post.id %>"><%= post.author.displayName %></a>
-              </li>
-              <li class="list-inline-item">
-                Dipublikasi pada: <%= new Date(post.published).toISOString().split('T')[0] %>
-              </li>
-            </ul>
-          </div>
-          <!-- Post Details -->
-          <!-- <div class="post-details"> -->
-          <!-- </div> -->
-        </article>
-      </div>
+      <% holvamp_courses.forEach(course => { %>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+          <article class="post-sm">
+            <!-- Post Image -->
+            <div class="post-thumb">
+              <a href="/blogs/<%= course.to %>"><img class="w-100" src="<%= course.image_course %>" alt="<%= course.course %> "></a>		
+            </div>
+            <!-- Post Title -->
+            <div class="post-title">
+              <h3 style="font-weight: 500;"><a href="/blogs/<%= course.to %>">Belajar <%= course.course %></a></h3>
+            </div>
+            <!-- Post Meta -->
+            <li class="list-inline-item">
+              <a href="/blogs/<%= course.to %>"><cite>Oleh: <%= course.by %></cite></a>
+            </li>
+            <div class="post-meta">
+              <ul class="list-inline post-tag">
+                <!-- <li class="list-inline-item">
+                  <img src="" alt="author-thumb">
+                </li> -->
+              </ul>
+            </div>
+            <!-- Post Details -->
+            <div class="post-details">
+              <p style="color: #808080;">
+                <%= course.desc %> 
+              </p>
+            </div>
+          </article>
+        </div>
       <% }) %>
       
     </div>
