@@ -191,8 +191,9 @@ app.get('/blogs', (req, res) => {
 // 2. blogs > blogs/{course-page}
 // !!! Holvamp's API (soon) !!!
 // == Course page ==
-app.get('/blogs/html-course', (req, res) => {
-    res.render('html-course', {
+app.get('/blogs/:course', (req, res) => {
+    const course = req.params.course
+    res.render('blog-course', {
         layout: 'layouts/main-layout.ejs',
         title: "Blog",
         pages,
@@ -202,25 +203,26 @@ app.get('/blogs/html-course', (req, res) => {
         author,
         blog_resource,
         blog_posts_data,
-        courses // !!! Holvamp's API (soon) !!!
-    });
+        courses, // !!! Holvamp's API (soon) !!!
+        course
+    });    
 })
 
-// 1. blogs
-// 2. blogs > blogs/{course-page}
-// 3. blogs/:id
+// 1. /blogs
+// 2. /blogs > /blogs/{course-page}
+// 3. /blogs/{course-page} > /blogs/{course-page}/:id
 // == Blog page ==
-app.get('/blogs/:id', (req, res) => {    
+app.get(`/blogs/:course/:id`, (req, res) => {    
     const id_params = req.params.id
+    console.log(req.params)
     // == fetch blog post resource ==
     axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}?key=${API_KEY}`).then((response) => {
         const post_data = response.data;
-        console.log(post_data)
         // == fetch blog post comments list ==
         // link didapat dari hateoas post resource
         axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}/comments?key=${API_KEY}`).then(response => {
             const comment_list = response.data
-            res.render('blog-post', {
+            res.render('blog-posts', {
                 layout: 'layouts/main-layout.ejs',
                 title: `${post_data.title}`,
                 pages,
