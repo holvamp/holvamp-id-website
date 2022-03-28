@@ -1,3 +1,8 @@
+<!-- 
+============================================================
+Blog-post mengambil data dari Blogger API V3 (Post Resource)
+============================================================
+-->
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 <!-- Navbar -->
 <%- include('layouts/navbar-layout') %>
@@ -11,6 +16,8 @@
 			<div class="col-md-10 m-auto">
 				<!-- Single Post -->
 				<article class="single-post">
+					<!-- Pagination -->
+					<%- include('layouts/pagination-layout') %>
 					<!-- Post title -->
 					<div class="post-title text-center">
 						<h1><%= post_data.title %></h1>

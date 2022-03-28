@@ -195,7 +195,7 @@ app.get('/blogs/:course', (req, res) => {
     const course = req.params.course
     res.render('blog-course', {
         layout: 'layouts/main-layout.ejs',
-        title: "Blog",
+        title: `${course}`,
         pages,
         socials_media,
         holvamp_icon_alt,
@@ -222,7 +222,7 @@ app.get(`/blogs/:course/:id`, (req, res) => {
         // link didapat dari hateoas post resource
         axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}/comments?key=${API_KEY}`).then(response => {
             const comment_list = response.data
-            res.render('blog-posts', {
+            res.render('blog-post', {
                 layout: 'layouts/main-layout.ejs',
                 title: `${post_data.title}`,
                 pages,
