@@ -30,8 +30,8 @@ const pages = [
         page_title: 'Tentang'
     },
     {
-        to: '/blogs',
-        page_title: 'Blog'
+        to: '/learns',
+        page_title: 'Belajar'
     },
     {
         to: '/contact-us',
@@ -155,15 +155,30 @@ app.get('/about', (req, res) => {
 // | |_|   ||       ||       ||   |_| |
 // |_______||_______||_______||_______|
 
-// ===========
-// == Blogs ==
-// ===========
+
+// === Holvamp's API | Learn page=== 
+const learns = [
+    {
+        title: 'Dasar Web Development',
+        desc: 'Belajar dasar mengembangkan aplikasi berbasis web dengan materi berbagai macam materi yang relevan dengan pengembangan di bidang pengembangan web(web developement).',
+        author: 'Akbar Angkasa',
+        img: 'dasar-web-development-course-banner.jpg',
+        to: '/learns/blogs'
+    },
+    {
+        title: 'Dasar Pemrograman Dengan Scratch',
+        desc: 'Belajar dasar pemrograman untuk pemula menggunakan platform belajar Scratch',
+        author: 'Akbar Angkasa',
+        img: 'scracth-course-banner.jpg',
+        to: '/learns/blogs'
+    },
+]
 
 // Architecture:
 // 1. /blogs
 // 2. /blogs > /blogs/{course-page}
 // 3. /blogs/:id 
-// === Holvamp's API soon ===
+// === Holvamp's API soon | Blogs page===
 // = Holvamp's course =
 const holvamp_api = [
     {
@@ -195,12 +210,30 @@ const holvamp_api = [
     },
 ]
 
+app.get('/learns', (req, res) => {
+    res.render('learns', {
+        layout: 'layouts/main-layout.ejs',
+        title: "Belajar",
+        pages,
+        socials_media,
+        holvamp_icon_alt,
+        products,
+        author,
+        holvamp_api, // !!! Holvamp's API (soon) !!!
+        learns, // !!! Holvamp's API (soon) !!! 
+    });
+});
+
+// ===========
+// == Blogs ==
+// ===========
+
 // 1. blogs
 // Blogs Page
 // fetch blog api
 // == holvamp_api pages ==
 // !!! Holvamp's API (soon) !!!
-app.get('/blogs', (req, res) => {   
+app.get('/learns/blogs', (req, res) => {   
     res.render('blogs',{
         layout: 'layouts/main-layout.ejs',
         title: "Blogs",
@@ -218,10 +251,11 @@ app.get('/blogs', (req, res) => {
 // 2. blogs > blogs/{course-page}
 // !!! Holvamp's API (soon) !!!
 // == Course page ==
-app.get('/blogs/:courses', (req, res) => {   
-    const course = req.params.courses
+app.get('/learns/blogs/:course', (req, res) => {   
+    const course = req.params.course
     axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/search?q=label:${course}&key=${API_KEY}`).then(response => {
         const posts = response.data;
+        console.log(posts)
         res.render('blog-course', {
             layout: 'layouts/main-layout.ejs',
             title: `${course}`,
@@ -237,13 +271,13 @@ app.get('/blogs/:courses', (req, res) => {
     }).catch(error => {
         console.log(error)
     });
-})
+});
 
 // 1. /blogs
 // 2. /blogs > /blogs/{course-page}
 // 3. /blogs/{course-page} > /blogs/{course-page}/:id
 // == Blog page ==
-app.get(`/blogs/:course/:id`, (req, res) => {    
+app.get(`/learns/blogs/:course/:id`, (req, res) => {    
     const id_params = req.params.id
     // == fetch blog post resource ==
     // selflink from Blogger API v3 posts resource

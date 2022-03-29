@@ -3,11 +3,12 @@
 Blog-course mengambil data dari Blogger API V3 (Blog Resource) dan Holvamp API (Soon)
 =====================================================================================
 -->
-<% const holvamp_datas = holvamp_api %> <!-- Holvamp's API-->
-<% blogger_data = posts.items %> <!-- Blogger API V3-->
-<% label = course %> <!-- req.params -->
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
-    <!-- Navbar -->
+  <% const holvamp_datas = holvamp_api %> <!-- Holvamp's API-->
+  <% blogger_data = posts.items %> <!-- Blogger API V3-->
+  <% label = course %> <!-- req.params -->
+  
+  <!-- Navbar -->
     <%- include('layouts/navbar-layout') %>
     <!-- End of Navbar -->
     <!--================================
@@ -39,11 +40,11 @@ Blog-course mengambil data dari Blogger API V3 (Blog Resource) dan Holvamp API (
                 <article class="post-sm">
                   <!-- Post Image -->
                   <div class="post-thumb">
-                    <a href="/blogs/<%= post.labels %>/<%= post.id %>"><img class="w-100" src="/images/blog/" alt="Post-Image"></a>		
+                    <a href="/learns/blogs/<%= post.labels %>/<%= post.id %>"><img class="w-100" src="/images/blog/" alt="Post-Image"></a>		
                   </div>
                   <!-- Post Title -->
                   <div class="post-title">
-                    <h3 style="font-weight: 400;"><a href="/blogs/<%= post.labels %>/<%= post.id %>"><%= post.title %></a></h3>
+                    <h3 style="font-weight: 400;"><a href="/learns/blogs/<%= post.labels %>/<%= post.id %>"><%= post.title %></a></h3>
                   </div>
                   <!-- Post Meta -->
                   <div class="post-meta">
@@ -52,7 +53,7 @@ Blog-course mengambil data dari Blogger API V3 (Blog Resource) dan Holvamp API (
                         <img src="<%= post.author.image.url %>" alt="author-thumb">
                       </li>
                       <li class="list-inline-item">
-                        <a href="/blogs/<%= post.labels %>/<%= post.id %>"><%= post.author.displayName %></a>
+                        <a href="/learns/blogs/<%= post.labels %>/<%= post.id %>"><%= post.author.displayName %></a>
                       </li>
                       <li class="list-inline-item text-muted">
                         Disunting pada: %> <%= new Date(post.updated).toISOString().split('T')[0] %>
