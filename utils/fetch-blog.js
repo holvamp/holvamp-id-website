@@ -33,5 +33,5 @@ let fetch_blog_posts = () => {
 }
 fetch_blog_posts()
 
-
+// === Blogger-API | Fetch Blog posts from blogs resources by q:label ===
 module.exports = {blog_resource, blog_posts_data}

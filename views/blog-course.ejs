@@ -1,11 +1,12 @@
 <!-- 
-==============================================================
-Blog-course mengambil data dari Blogger API V3 (Blog Resource)
-==============================================================
+=====================================================================================
+Blog-course mengambil data dari Blogger API V3 (Blog Resource) dan Holvamp API (Soon)
+=====================================================================================
 -->
+<% const holvamp_datas = holvamp_api %> <!-- Holvamp's API-->
+<% blogger_data = posts.items %> <!-- Blogger API V3-->
+<% label = course %> <!-- req.params -->
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
-    <% const blogs = blog_resource[0] %>
-    <% const Course = course %> 
     <!-- Navbar -->
     <%- include('layouts/navbar-layout') %>
     <!-- End of Navbar -->
@@ -17,12 +18,14 @@ Blog-course mengambil data dari Blogger API V3 (Blog Resource)
           <div class="row">
             <div class="col-sm-8 m-auto">
               <!-- Page Title -->
-              <h1><%= blogs.name %></h1>
+              
+
+
               <!-- Page Description -->
               <p> 
-                <%= blogs.description %>
+                <!--  -->
               </p>
-              <small class="text-muted">Terakhir disunting pada: <%= new Date(blogs.updated).toISOString().split('T')[0] %> </small>
+              <!-- date here -->
             </div>
           </div>
         </div>
@@ -31,38 +34,36 @@ Blog-course mengambil data dari Blogger API V3 (Blog Resource)
       <section class="post-grid section pt-0">
       <div class="container">
         <div class="row">
-      <% const posts = blog_posts_data[0].items %>
-      <% posts.forEach(post => { %>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <article class="post-sm">
-              <!-- Post Image -->
-              <div class="post-thumb">
-                <a href="/blogs/<%= Course %>/<%= post.id %>"><img class="w-100" src="/images/blog/html-course-banner.jpg" alt="Post-Image"></a>		
+            <% blogger_data.forEach(post => { %>
+              <div class="col-lg-4 col-md-4 col-sm-6">
+                <article class="post-sm">
+                  <!-- Post Image -->
+                  <div class="post-thumb">
+                    <a href="/blogs/<%= post.labels %>/<%= post.id %>"><img class="w-100" src="/images/blog/" alt="Post-Image"></a>		
+                  </div>
+                  <!-- Post Title -->
+                  <div class="post-title">
+                    <h3 style="font-weight: 400;"><a href="/blogs/<%= post.labels %>/<%= post.id %>"><%= post.title %></a></h3>
+                  </div>
+                  <!-- Post Meta -->
+                  <div class="post-meta">
+                    <ul class="list-inline post-tag">
+                      <li class="list-inline-item">
+                        <img src="<%= post.author.image.url %>" alt="author-thumb">
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="/blogs/<%= post.labels %>/<%= post.id %>"><%= post.author.displayName %></a>
+                      </li>
+                      <li class="list-inline-item text-muted">
+                        Disunting pada: %> <%= new Date(post.updated).toISOString().split('T')[0] %>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- <div class="post-details">
+                  </div> -->
+                </article>
               </div>
-              <!-- Post Title -->
-              <div class="post-title">
-                <h3 style="font-weight: 400;"><a href="/blogs/<%= post.id %>"><%= post.title %></a></h3>
-              </div>
-              <!-- Post Meta -->
-              <div class="post-meta">
-                <ul class="list-inline post-tag">
-                  <li class="list-inline-item">
-                    <img src="<%= post.author.image.url %>" alt="author-thumb">
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="/blogs/<%= post.id %>"><%= post.author.displayName %></a>
-                  </li>
-                  <li class="list-inline-item text-muted">
-                    Dipublikasi pada: <%= new Date(post.published).toISOString().split('T')[0] %>
-                  </li>
-                </ul>
-              </div>
-              <!-- Post Details -->
-              <!-- <div class="post-details"> -->
-              <!-- </div> -->
-            </article>
-          </div>
-          <% }) %>
+            <% }) %>
         </div>
       </div>
     </section>

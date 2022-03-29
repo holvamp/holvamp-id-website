@@ -8,7 +8,6 @@ const port = process.env.PORT || 4000;
 // axios
 const axios = require('axios')
 const API_KEY = 'AIzaSyATggcpPcDwU6CX8vd1nGdSARnYDjp0WQ8';
-// HTML parser
 
 // Express view engine EJS.
 const expressLayouts = require('express-ejs-layouts');
@@ -148,6 +147,14 @@ app.get('/about', (req, res) => {
     })
 })
 
+// _______  ___      _______  _______ 
+// |  _    ||   |    |       ||       |
+// | |_|   ||   |    |   _   ||    ___|
+// |       ||   |    |  | |  ||   | __ 
+// |  _   | |   |___ |  |_|  ||   ||  |
+// | |_|   ||       ||       ||   |_| |
+// |_______||_______||_______||_______|
+
 // ===========
 // == Blogs ==
 // ===========
@@ -158,23 +165,42 @@ app.get('/about', (req, res) => {
 // 3. /blogs/:id 
 // === Holvamp's API soon ===
 // = Holvamp's course =
-const courses = [
+const holvamp_api = [
     {
-        image_general:'images/blog/holvamp-course-banner.jpg', 
-        image_course: 'images/blog/html-course-banner.jpg',
         course:'HTML Dasar',
-        to:'html-course',
+        image_general:'holvamp-course-banner.jpg', 
+        image_course: 'html-course-banner.jpg',
+        // to:'html',
         by:'Holvamp',
-        desc: 'Belajar HTML Dasar sebagai pengetahuan yang wajib dikuasai sebelum lanjut belajar CSS, Javascript dan teknologi web lainnya.'
-    }
+        desc: 'Belajar HTML Dasar sebagai pengetahuan yang wajib dikuasai sebelum lanjut belajar CSS, HTML dan teknologi web lainnya.',
+        label: 'html'
+    },
+    {
+        course:'CSS Dasar',
+        image_general:'holvamp-course-banner.jpg', 
+        image_course: 'css-course-banner.jpg',
+        // to:'css',
+        by:'Holvamp',
+        desc: 'Belajar CSS Dasar sebagai pengetahuan yang wajib dikuasai sebelum lanjut belajar teknologi web lainnya.',
+        label: 'css'
+    },
+    {
+        course:'Javascript Dasar',
+        image_general:'holvamp-course-banner.jpg', 
+        image_course: 'javascript-course-banner.jpg',
+        // to:'javascript',
+        by:'Holvamp',
+        desc: 'Belajar Javascript Dasar sebagai pengetahuan yang wajib dikuasai sebelum lanjut belajar teknologi web lainnya.',
+        label: 'javascript'
+    },
 ]
 
 // 1. blogs
 // Blogs Page
 // fetch blog api
-// == Courses pages ==
+// == holvamp_api pages ==
 // !!! Holvamp's API (soon) !!!
-app.get('/blogs', (req, res) => {
+app.get('/blogs', (req, res) => {   
     res.render('blogs',{
         layout: 'layouts/main-layout.ejs',
         title: "Blogs",
@@ -183,7 +209,8 @@ app.get('/blogs', (req, res) => {
         holvamp_icon_alt,
         products,
         author,
-        courses // !!! Holvamp's API (soon) !!!
+        holvamp_api, // !!! Holvamp's API (soon) !!!
+         // !!! Blogger API V3 !!!
     })
 })
 
@@ -191,21 +218,25 @@ app.get('/blogs', (req, res) => {
 // 2. blogs > blogs/{course-page}
 // !!! Holvamp's API (soon) !!!
 // == Course page ==
-app.get('/blogs/:course', (req, res) => {
-    const course = req.params.course
-    res.render('blog-course', {
-        layout: 'layouts/main-layout.ejs',
-        title: `${course}`,
-        pages,
-        socials_media,
-        holvamp_icon_alt,
-        products,
-        author,
-        blog_resource,
-        blog_posts_data,
-        courses, // !!! Holvamp's API (soon) !!!
-        course
-    });    
+app.get('/blogs/:courses', (req, res) => {   
+    const course = req.params.courses
+    axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/search?q=label:${course}&key=${API_KEY}`).then(response => {
+        const posts = response.data;
+        res.render('blog-course', {
+            layout: 'layouts/main-layout.ejs',
+            title: `${course}`,
+            pages,
+            socials_media,
+            holvamp_icon_alt,
+            products,
+            author,
+            course, // !!! dari parameter !!!
+            posts, // !!! Blogger API V3 !!!
+            holvamp_api
+        });
+    }).catch(error => {
+        console.log(error)
+    });
 })
 
 // 1. /blogs
@@ -214,8 +245,8 @@ app.get('/blogs/:course', (req, res) => {
 // == Blog page ==
 app.get(`/blogs/:course/:id`, (req, res) => {    
     const id_params = req.params.id
-    console.log(req.params)
     // == fetch blog post resource ==
+    // selflink from Blogger API v3 posts resource
     axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}?key=${API_KEY}`).then((response) => {
         const post_data = response.data;
         // == fetch blog post comments list ==
@@ -240,6 +271,14 @@ app.get(`/blogs/:course/:id`, (req, res) => {
         console.log(error)
     });
 });
+
+// _______  __    _  ______     _______  _______    _______  ___      _______  _______ 
+// |       ||  |  | ||      |   |       ||       |  |  _    ||   |    |       ||       |
+// |    ___||   |_| ||  _    |  |   _   ||    ___|  | |_|   ||   |    |   _   ||    ___|
+// |   |___ |       || | |   |  |  | |  ||   |___   |       ||   |    |  | |  ||   | __ 
+// |    ___||  _    || |_|   |  |  |_|  ||    ___|  |  _   | |   |___ |  |_|  ||   ||  |
+// |   |___ | | |   ||       |  |       ||   |      | |_|   ||       ||       ||   |_| |
+// |_______||_|  |__||______|   |_______||___|      |_______||_______||_______||_______|
 
 // Contact-us page
 app.get('/contact-us', (req, res) => {

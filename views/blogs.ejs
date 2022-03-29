@@ -3,7 +3,7 @@
 Blogs mengambil data dari API local (sementara)
 ===============================================
 -->
-<% const holvamp_courses = courses %> 
+<% const holvamp_datas = holvamp_api %> 
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 <!-- Navbar -->
 <%- include('layouts/navbar-layout') %>
@@ -33,20 +33,20 @@ Blogs mengambil data dari API local (sementara)
   <section class="post-grid section pt-0">
   <div class="container">
     <div class="row">
-      <% holvamp_courses.forEach(course => { %>
+      <% holvamp_datas.forEach(course => { %>
         <div class="col-lg-4 col-md-4 col-sm-6">
           <article class="post-sm">
             <!-- Post Image -->
             <div class="post-thumb">
-              <a href="/blogs/<%= course.to %>"><img class="w-100" src="<%= course.image_course %>" alt="<%= course.course %> "></a>		
+              <a href="/blogs/<%= course.label %>"><img class="w-100" src="/images/blog/<%= course.image_course %>" alt="<%= course.course %> "></a>		
             </div>
             <!-- Post Title -->
             <div class="post-title">
-              <h3 style="font-weight: 500;"><a href="/blogs/<%= course.to %>">Belajar <%= course.course %></a></h3>
+              <h3 style="font-weight: 500;"><a href="/blogs/<%= course.label %>">Belajar <%= course.course %></a></h3>
             </div>
             <!-- Post Meta -->
             <li class="list-inline-item">
-              <a href="/blogs/<%= course.to %>"><cite>Oleh: <%= course.by %></cite></a>
+              <a href="/blogs/<%= course.label %>"><cite>Oleh: <%= course.by %></cite></a>
             </li>
             <div class="post-meta">
               <ul class="list-inline post-tag">
