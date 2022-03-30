@@ -30,7 +30,7 @@ const pages = [
         page_title: 'Tentang'
     },
     {
-        to: '/learns',
+        to: '/courses',
         page_title: 'Belajar'
     },
     {
@@ -115,8 +115,8 @@ const products = [
         page: 'Tutorial'
     },
     {
-        to: '/blogs',
-        page: 'Blogs'
+        to: '/learn',
+        page: 'learn'
     }
 ]
 
@@ -156,62 +156,30 @@ app.get('/about', (req, res) => {
 // |_______||_______||_______||_______|
 
 
-// === Holvamp's API | Learn page=== 
-const learns = [
+// === Holvamp's API | Courses page=== 
+const courses = [
     {
         title: 'Dasar Web Development',
         desc: 'Belajar dasar mengembangkan aplikasi berbasis web dengan materi berbagai macam materi yang relevan dengan pengembangan di bidang pengembangan web(web developement).',
         author: 'Akbar Angkasa',
         img: 'dasar-web-development-course-banner.jpg',
-        to: '/learns/blogs'
+        label: 'dasar-web-development'
     },
     {
         title: 'Dasar Pemrograman Dengan Scratch',
         desc: 'Belajar dasar pemrograman untuk pemula menggunakan platform belajar Scratch',
         author: 'Akbar Angkasa',
         img: 'scracth-course-banner.jpg',
-        to: '/learns/blogs'
+        label: 'dasar-pemrograman-dengan-scratch'
     },
 ]
 
-// Architecture:
-// 1. /blogs
-// 2. /blogs > /blogs/{course-page}
-// 3. /blogs/:id 
-// === Holvamp's API soon | Blogs page===
-// = Holvamp's course =
-const holvamp_api = [
-    {
-        course:'HTML Dasar',
-        image_general:'holvamp-course-banner.jpg', 
-        image_course: 'html-course-banner.jpg',
-        // to:'html',
-        by:'Holvamp',
-        desc: 'Belajar HTML Dasar sebagai pengetahuan yang wajib dikuasai sebelum lanjut belajar CSS, HTML dan teknologi web lainnya.',
-        label: 'html'
-    },
-    {
-        course:'CSS Dasar',
-        image_general:'holvamp-course-banner.jpg', 
-        image_course: 'css-course-banner.jpg',
-        // to:'css',
-        by:'Holvamp',
-        desc: 'Belajar CSS Dasar sebagai pengetahuan yang wajib dikuasai sebelum lanjut belajar teknologi web lainnya.',
-        label: 'css'
-    },
-    {
-        course:'Javascript Dasar',
-        image_general:'holvamp-course-banner.jpg', 
-        image_course: 'javascript-course-banner.jpg',
-        // to:'javascript',
-        by:'Holvamp',
-        desc: 'Belajar Javascript Dasar sebagai pengetahuan yang wajib dikuasai sebelum lanjut belajar teknologi web lainnya.',
-        label: 'javascript'
-    },
-]
-
-app.get('/learns', (req, res) => {
-    res.render('learns', {
+// =============
+// == Courses ==
+// =============
+// 1.page: /courses
+app.get('/courses', (req, res) => {
+    res.render('courses', {
         layout: 'layouts/main-layout.ejs',
         title: "Belajar",
         pages,
@@ -219,89 +187,60 @@ app.get('/learns', (req, res) => {
         holvamp_icon_alt,
         products,
         author,
-        holvamp_api, // !!! Holvamp's API (soon) !!!
-        learns, // !!! Holvamp's API (soon) !!! 
+        courses, // !!! Holvamp's API (courses) (soon) !!! 
     });
 });
 
-// ===========
-// == Blogs ==
-// ===========
-
-// 1. blogs
-// Blogs Page
-// fetch blog api
-// == holvamp_api pages ==
-// !!! Holvamp's API (soon) !!!
-app.get('/learns/blogs', (req, res) => {   
-    res.render('blogs',{
-        layout: 'layouts/main-layout.ejs',
-        title: "Blogs",
-        pages,
-        socials_media,
-        holvamp_icon_alt,
-        products,
-        author,
-        holvamp_api, // !!! Holvamp's API (soon) !!!
-         // !!! Blogger API V3 !!!
-    })
-})
-
-// 1. blogs
-// 2. blogs > blogs/{course-page}
-// !!! Holvamp's API (soon) !!!
-// == Course page ==
-app.get('/learns/blogs/:course', (req, res) => {   
-    const course = req.params.course
-    axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/search?q=label:${course}&key=${API_KEY}`).then(response => {
-        const posts = response.data;
-        console.log(posts)
-        res.render('blog-course', {
+// ============
+// == learns ==
+// ============
+// learns page
+// 2.page: /courses/:label
+// !! Blogger API v3 Posts resource by label !!
+// :label = learns
+app.get('/courses/:label', (req, res) => {   
+    const learn_topics_params = req.params.label;
+    axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/search?q=label:${learn_topics_params}&key=${API_KEY}`).then(response => {
+        const learn_topics = response.data.items;
+        console.log(learn_topics)
+        res.render('learns',{
             layout: 'layouts/main-layout.ejs',
-            title: `${course}`,
+            title: `${learn_topics_params}`,
+            learn_topics_params,
             pages,
             socials_media,
             holvamp_icon_alt,
             products,
             author,
-            course, // !!! dari parameter !!!
-            posts, // !!! Blogger API V3 !!!
-            holvamp_api
+            learn_topics // !!! Blogger API v3 !!!
         });
     }).catch(error => {
         console.log(error)
     });
 });
 
-// 1. /blogs
-// 2. /blogs > /blogs/{course-page}
-// 3. /blogs/{course-page} > /blogs/{course-page}/:id
-// == Blog page ==
-app.get(`/learns/blogs/:course/:id`, (req, res) => {    
-    const id_params = req.params.id
-    // == fetch blog post resource ==
-    // selflink from Blogger API v3 posts resource
-    axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}?key=${API_KEY}`).then((response) => {
+// // learn page
+// // 3.page: /courses/:label/:id
+// !! Blogger API v3 Posts resource by id (selflink from hateoas) !!
+// :label = learns
+// :id = learn
+app.get('/courses/:label/:id', (req, res) => {
+    const post_id = req.params.id
+    axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${post_id}?key=${API_KEY}`).then(response => {
         const post_data = response.data;
-        // == fetch blog post comments list ==
-        // link didapat dari hateoas post resource
-        axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${id_params}/comments?key=${API_KEY}`).then(response => {
-            const comment_list = response.data
-            res.render('blog-post', {
-                layout: 'layouts/main-layout.ejs',
-                title: `${post_data.title}`,
-                pages,
-                socials_media,
-                holvamp_icon_alt,
-                products,
-                author,
-                post_data,
-                comment_list
-            })
-        }).catch(error => {
-            console.log(error)
-        })
-    }).catch((error) => {
+        const title = response.data.title;
+        console.log(post_data);
+        res.render('learn', {
+            layout: 'layouts/main-layout.ejs',
+            title,
+            pages,
+            socials_media,
+            holvamp_icon_alt,
+            products,
+            author,
+            post_data, // !!! Blogger API v3 !!! 
+        });
+    }).catch(error => {
         console.log(error)
     });
 });
