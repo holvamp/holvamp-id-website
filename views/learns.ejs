@@ -34,15 +34,20 @@ learns mengambil data dari Blogger API
             <article class="post-sm">
               <!-- Post Image -->
               <div class="post-thumb">
-                <a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %> "><img class="w-100" src="/images/blog/holvamp-learn-banner.jpg" alt="learns-image"></a>		
+                <a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %>"><img class="w-100" src="/images/blog/holvamp-learn-banner.jpg" alt="learns-image"></a>		
               </div>
               <!-- Post Title -->
               <div class="post-title">
                 <h3 style="font-weight: 500;"><a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %> "><%= learn_topic.title %></a></h3>
               </div>
               <!-- Post Meta -->
+              <!-- Author -->
               <li class="list-inline-item">
-                <a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %> "><cite>Oleh: <%= learn_topic.author.displayName %></cite></a>
+                <a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %> "><cite><%= learn_topic.author.displayName %></cite></a>
+              </li>
+              <!-- Published -->
+              <li class="list-inline-item">
+                <cite>Disunting pada: <%= new Date(learn_topic.published).toISOString().split('T')[0] %></cite>
               </li>
               <div class="post-meta">
                 <ul class="list-inline post-tag">
