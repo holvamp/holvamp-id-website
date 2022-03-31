@@ -165,13 +165,13 @@ const courses = [
         img: 'dasar-web-development-course-banner.jpg',
         label: 'dasar-web-development'
     },
-    {
-        title: 'Dasar Pemrograman Dengan Scratch',
-        desc: 'Belajar dasar pemrograman untuk pemula menggunakan platform belajar Scratch',
-        author: 'Akbar Angkasa',
-        img: 'dasar-pemrograman-dengan-scratch-course-banner.jpg',
-        label: 'dasar-pemrograman-dengan-scratch'
-    },
+    // {
+    //     title: 'Dasar Pemrograman Dengan Scratch',
+    //     desc: 'Belajar dasar pemrograman untuk pemula menggunakan platform belajar Scratch',
+    //     author: 'Akbar Angkasa',
+    //     img: 'dasar-pemrograman-dengan-scratch-course-banner.jpg',
+    //     label: 'dasar-pemrograman-dengan-scratch'
+    // },
 ]
 
 // =============
@@ -200,9 +200,9 @@ app.get('/courses', (req, res) => {
 // :label = learns
 app.get('/courses/:label', (req, res) => {   
     const learn_topics_params = req.params.label;
+    console.log(learn_topics_params);
     axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/search?q=label:${learn_topics_params}&key=${API_KEY}`).then(response => {
-        const learn_topics = response.data.items;
-        console.log(learn_topics)
+        const learn_topics = response.data.items; // array of posts by label Blogger API V3 | Posts resource
         res.render('learns',{
             layout: 'layouts/main-layout.ejs',
             title: `${learn_topics_params}`,
@@ -227,9 +227,8 @@ app.get('/courses/:label', (req, res) => {
 app.get('/courses/:label/:id', (req, res) => {
     const post_id = req.params.id
     axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/${post_id}?key=${API_KEY}`).then(response => {
-        const post_data = response.data;
+        const post_data = response.data; // array of posts by id Blogger API V3 | Posts resource
         const title = response.data.title;
-        console.log(post_data);
         res.render('learn', {
             layout: 'layouts/main-layout.ejs',
             title,

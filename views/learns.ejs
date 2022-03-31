@@ -1,7 +1,7 @@
 <!-- 
-========================================================
-learns mengambil data dari Blogger API dan Holvamp's API
-========================================================
+=============================================================
+learns mengambil data dari Blogger API dan Holvamp's Database
+=============================================================
 -->
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 <!-- Navbar -->
@@ -29,7 +29,8 @@ learns mengambil data dari Blogger API dan Holvamp's API
   <section class="post-grid section pt-0">
   <div class="container">
     <div class="row">
-      <% const learn_img = learn_topics_params %> 
+      <% const learn_img = learn_topics_params %>
+      <% const author_name = author %> 
         <% learn_topics.forEach(learn_topic => { %>
           <div class="col-lg-4 col-md-4 col-sm-6">
             <article class="post-sm">
