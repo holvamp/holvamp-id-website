@@ -7,6 +7,9 @@ learn mengambil data dari Blogger API
 <!-- Navbar -->
 <%- include('layouts/navbar-layout') %>
 <!-- End of Navbar -->
+<!-- pagination -->
+<%- include('layouts/pagination-layout') %> 
+<!-- End of pagination -->
 <!--====================================
 =            Single Article            =
 =====================================-->
@@ -16,8 +19,6 @@ learn mengambil data dari Blogger API
 			<div class="col-md-10 m-auto">
 				<!-- Single Post -->
 				<article class="single-post">
-					<!-- Pagination -->
-					<%- include('layouts/pagination-layout') %>
 					<!-- Post title -->
 					<div class="post-title text-center">
 						<h1><%= post_data.title %></h1>

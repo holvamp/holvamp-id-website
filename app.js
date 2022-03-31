@@ -169,7 +169,7 @@ const courses = [
         title: 'Dasar Pemrograman Dengan Scratch',
         desc: 'Belajar dasar pemrograman untuk pemula menggunakan platform belajar Scratch',
         author: 'Akbar Angkasa',
-        img: 'scracth-course-banner.jpg',
+        img: 'dasar-pemrograman-dengan-scratch-course-banner.jpg',
         label: 'dasar-pemrograman-dengan-scratch'
     },
 ]
@@ -187,7 +187,7 @@ app.get('/courses', (req, res) => {
         holvamp_icon_alt,
         products,
         author,
-        courses, // !!! Holvamp's API (courses) (soon) !!! 
+        courses, // !!! Holvamp's API (courses) (soon) !!!
     });
 });
 

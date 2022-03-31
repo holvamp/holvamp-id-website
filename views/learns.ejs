@@ -1,7 +1,7 @@
 <!-- 
-=====================================
-learns mengambil data dari Blogger API
-=====================================
+========================================================
+learns mengambil data dari Blogger API dan Holvamp's API
+========================================================
 -->
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 <!-- Navbar -->
@@ -29,16 +29,17 @@ learns mengambil data dari Blogger API
   <section class="post-grid section pt-0">
   <div class="container">
     <div class="row">
+      <% const learn_img = learn_topics_params %> 
         <% learn_topics.forEach(learn_topic => { %>
           <div class="col-lg-4 col-md-4 col-sm-6">
             <article class="post-sm">
               <!-- Post Image -->
               <div class="post-thumb">
-                <a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %>"><img class="w-100" src="/images/blog/holvamp-learn-banner.jpg" alt="learns-image"></a>		
+                <a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %>"><img class="w-100" src="/images/learns/<%= learn_img %>-course-banner.jpg" alt="learns-image"></a>		
               </div>
               <!-- Post Title -->
               <div class="post-title">
-                <h3 style="font-weight: 500;"><a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %> "><%= learn_topic.title %></a></h3>
+                <h3 style="font-weight: 500;"><a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %>"><%= learn_topic.title %></a></h3>
               </div>
               <!-- Post Meta -->
               <!-- Author -->
