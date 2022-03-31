@@ -38,8 +38,8 @@ const pages = [
         page_title: 'Kontak'
     },
     {
-        to: '/join',
-        page_title: 'Gabung'
+        to: '/community',
+        page_title: 'Komunitas'
     },
 ]
 // == icons | socials media routes & icons ==
@@ -271,11 +271,11 @@ app.post('/contact-us', (req, res) => {
     res.redirect('contact-us')
 })
 
-// Join page
-app.get('/join', (req, res) => {
-    res.render('join', {
+// Community page
+app.get('/community', (req, res) => {
+    res.render('community', {
         layout: 'layouts/main-layout.ejs',
-        title: "Kontak",
+        title: "Komunitas",
         pages,
         socials_media,
         holvamp_icon_alt,
