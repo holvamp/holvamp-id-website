@@ -79,25 +79,32 @@ const socials_media = [
     {
         to: 'https://www.youtube.com/channel/UCPTBQ8AxU-wsWVcdVgr55Yg',
         b_icon:'bi bi-youtube',
-        page: 'Youtube'
+        page: 'Youtube',
+        id:'holvamps-youtube',
+        bg_color: 'bg-primary'
     },
     {
         to: 'https://www.instagram.com/holvamp/',
         // bootstrap 5 icons.
         b_icon:'bi bi-instagram',
-        page: 'Instagram'
+        page: 'Instagram',
+        id:'holvamps-instagram',
+        bg_color: 'bg-primary'
     },
     {
         // invite to Holvamp Discord server.
-        to: 'https://discord.gg/k3c5EDtBnU',
+        // to: 'https://discord.gg/k3c5EDtBnU',
+        to: '#',
         b_icon:'bi bi-discord',
-        page: 'Discord'
+        page: 'Discord',
+        id:'holvamps-discord',
+        bg_color: 'bg-secondary'
     },
-    {
-        to: 'https://www.reddit.com/user/Holvamp',
-        b_icon:'bi bi-reddit',
-        page: 'Reddit'
-    },
+    // {
+    //     to: 'https://www.reddit.com/user/Holvamp',
+    //     b_icon:'bi bi-reddit',
+    //     page: 'Reddit'
+    // },
 ]
 
 // = icons =
@@ -160,7 +167,7 @@ app.get('/about', (req, res) => {
 const courses = [
     {
         title: 'Dasar Web Development',
-        desc: 'Belajar dasar mengembangkan aplikasi berbasis web dengan materi berbagai macam materi yang relevan dengan pengembangan di bidang pengembangan web(web developement).',
+        desc: 'Belajar dasar mengembangkan aplikasi berbasis web dengan berbagai macam materi yang relevan dengan pengembangan di bidang pengembangan web(web developement).',
         author: 'Akbar Angkasa',
         img: 'dasar-web-development-course-banner.jpg',
         label: 'dasar-web-development'
