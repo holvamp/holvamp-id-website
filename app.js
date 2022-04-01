@@ -167,7 +167,7 @@ app.get('/about', (req, res) => {
 const courses = [
     {
         title: 'Dasar Web Development',
-        desc: 'Belajar dasar mengembangkan aplikasi berbasis web dengan berbagai macam materi yang relevan dengan pengembangan di bidang pengembangan web(web developement).',
+        desc: 'Belajar dasar mengembangkan aplikasi berbasis web dengan berbagai macam materi yang relevan di bidang pengembangan web(web developement).',
         author: 'Akbar Angkasa',
         img: 'dasar-web-development-course-banner.jpg',
         label: 'dasar-web-development'
