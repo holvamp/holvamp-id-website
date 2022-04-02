@@ -49,6 +49,7 @@ const author = {
     nickname: 'Abay',
     img:'/images/img/people/akbar-angkasa.jpg',
     description: 'Akrab dipanggil Abay manusia berusia 19 tahun berjabatan Mahasiswa pada sebuah politeknik negeri di Indonesia, memiliki minat pada dunia pemprograman khususnya pada bidang Web development.',
+    role:'Founder | Fullstack Web Developer | Pemateri',
     to: 'https://akbarangkasa.com/',
     socials: [
         {
