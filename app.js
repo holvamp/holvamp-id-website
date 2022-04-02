@@ -218,7 +218,6 @@ app.get('/courses/:label', (req, res) => {
     const learn_topics_params = req.params.label;
     axios.get(`https://www.googleapis.com/blogger/v3/blogs/7981172435967168790/posts/search?q=label:${learn_topics_params}&key=${API_KEY}`).then(response => {
         const learn_topics = response.data.items; // array of posts by label Blogger API V3 | Posts resource
-        console.log(learn_topics);
         res.render('learns',{
             layout: 'layouts/main-layout.ejs',
             title: `${learn_topics_params}`,

@@ -5,8 +5,9 @@ learn mengambil data dari Blogger API
 -->
 <style>
 	#blog_paragraph img {
-		max-width: 100%;
+		max-width: 90%;
 		height: auto;
+		margin: auto;
 	}
 </style>
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
@@ -55,7 +56,7 @@ learn mengambil data dari Blogger API
 					<!-- Post body -->
 					<div class="post-body mt-5">
 						<!-- Paragrapgh | DOM EJS -->
-						<p class="container" id="blog_paragraph" data-test-attr="<%= post_data.content %>"></p>
+						<p id="blog_paragraph" data-test-attr="<%= post_data.content %>"></p>
 					</div>
 				</article>		
 			</div>
