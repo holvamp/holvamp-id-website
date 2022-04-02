@@ -45,25 +45,27 @@ learns mengambil data dari Blogger API dan Holvamp's Database
                 <h3 style="font-weight: 500;"><a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %>"><%= learn_topic.title %></a></h3>
               </div>
               <!-- Post Meta -->
-              <!-- Author -->
-              <li class="list-inline-item">
-                <a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %> "><cite>Oleh: <%= learn_topic.author.displayName %></cite></a>
-              </li>
-              <!-- Published -->
-              <li class="list-inline-item">
-                <cite>Disunting pada: <%= new Date(learn_topic.published).toISOString().split('T')[0] %></cite>
-              </li>
               <div class="post-meta">
                 <ul class="list-inline post-tag">
-                  <!-- <li class="list-inline-item">
-                    <img src="" alt="author-thumb">
-                  </li> -->
+                  <!-- Author -->
+                  <li class="list-inline-item">
+                    <a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %>">
+                      <img src="<%= learn_topic.author.image.url %>" alt="author-thumb">
+                    </a>
+                    <a href="/courses/<%= learn_topic.labels[0] %>/<%= learn_topic.id %>">
+                      <cite>Oleh: <%= learn_topic.author.displayName %></cite>
+                    </a>
+                  </li>
+                  <!-- Published -->
+                  <li class="list-inline-item">
+                    <cite>Disunting pada: <%= new Date(learn_topic.published).toISOString().split('T')[0] %></cite>
+                  </li>
                 </ul>
               </div>
               <!-- Post Details -->
               <div class="post-details">
-                <p style="color: #808080;">
-  
+                <p style="color: #808080;" id="blog_paragraph" data-test-attr="<%= learn_topic.content %>">
+                  
                 </p>
               </div>
             </article>
@@ -80,6 +82,7 @@ learns mengambil data dari Blogger API dan Holvamp's Database
 <%- include('layouts/footer-layout') %>
 <!--====  End of Footer  ====-->                                                                                                            
 <script>
+  // ==== Learn Topic ====
   // const text_total = document.getElementsByClassName('learn-topic-text');
   const text_learn_topic = document.getElementsByClassName('learn-topic-text');
   for(i = 0; i < text_learn_topic.length; i++){
