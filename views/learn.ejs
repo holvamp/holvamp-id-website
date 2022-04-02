@@ -3,6 +3,12 @@
 learn mengambil data dari Blogger API
 =====================================
 -->
+<style>
+	#blog_paragraph img {
+		max-width: 100%;
+		height: auto;
+	}
+</style>
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 <!-- Navbar -->
 <%- include('layouts/navbar-layout') %>
@@ -49,7 +55,7 @@ learn mengambil data dari Blogger API
 					<!-- Post body -->
 					<div class="post-body mt-5">
 						<!-- Paragrapgh | DOM EJS -->
-						<p class="overflow-auto" id="blog_paragraph" data-test-attr="<%= post_data.content %>"></p>
+						<p class="container" id="blog_paragraph" data-test-attr="<%= post_data.content %>"></p>
 					</div>
 				</article>		
 			</div>
