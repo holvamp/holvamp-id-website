@@ -79,6 +79,7 @@ const author = {
 const socials_media = [
     {
         to: 'https://www.youtube.com/channel/UCPTBQ8AxU-wsWVcdVgr55Yg',
+        target: 'blank',
         b_icon:'bi bi-youtube',
         page: 'Youtube',
         id:'holvamps-youtube',
@@ -86,6 +87,7 @@ const socials_media = [
     },
     {
         to: 'https://www.instagram.com/holvamp/',
+        target: 'blank',
         // bootstrap 5 icons.
         b_icon:'bi bi-instagram',
         page: 'Instagram',
@@ -95,7 +97,8 @@ const socials_media = [
     {
         // invite to Holvamp Discord server.
         // to: 'https://discord.gg/k3c5EDtBnU',
-        to: '#',
+        to: '',
+        target: '',
         b_icon:'bi bi-discord',
         page: 'Discord',
         id:'holvamps-discord',
@@ -169,9 +172,14 @@ const courses = [
     {
         title: 'Dasar Web Development',
         desc: 'Belajar dasar mengembangkan aplikasi berbasis web dengan berbagai macam materi yang relevan di bidang pengembangan web(web developement).',
-        author: 'Akbar Angkasa',
         img: 'dasar-web-development-course-banner.jpg',
-        label: 'dasar-web-development'
+        label: 'dasar-web-development',
+        author: [
+            {
+                displayName: 'Akbar Angkasa',
+                image: 'akbar-angkasa.jpg'
+            }
+        ]
     },
     // {
     //     title: 'Dasar Pemrograman Dengan Scratch',

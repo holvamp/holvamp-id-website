@@ -19,7 +19,7 @@
         <!--==== Content ====-->
         <div class="container d-flex flex-column col-lg-3">
             <% socials_media.forEach(social => { %>
-                <a href="<%= social.to %>" target="blank" class="btn btn-rounded-icon <%= social.bg_color %>" id="<%= social.id %>">
+                <a href="<%= social.to %>" target="<%= social.target %>" class="btn btn-rounded-icon <%= social.bg_color %>" id="<%= social.id %>">
                     <i class="<%= social.b_icon %>"></i>
                     <%= social.page %>
                 </a>
@@ -27,11 +27,11 @@
         </div>
     </section>
     <!--==== End of content ====-->
-
     <!--==== Footer ====-->
     <%- include('layouts/footer-layout') %>
     <!--====  End of Footer  ====--> 
     <script>
+        // My DOM
         // temporary alert
         let temporary_holvamp_discord = document.getElementById('holvamps-discord')
         temporary_holvamp_discord.addEventListener('click', function(){

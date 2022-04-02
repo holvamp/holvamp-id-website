@@ -12,8 +12,8 @@
 				<ul class="list-inline">
 					<% socials_media.forEach(social_media => { %>
 						<li class="list-inline-item">
-							<a href="<%= social_media.to %>" target="blank" class="btn btn-rounded-icon">
-								<i class="<%= social_media.b_icon %>"></i>
+							<a href="<%= social_media.to %>" target="<%= social_media.target %>" class="btn btn-rounded-icon <%= social_media.bg_color %>" id="<%= social_media.id %>">
+								<i class="<%= social_media.b_icon %> "></i>
 								<%= social_media.page %> 
 							</a>
 						</li>
@@ -24,3 +24,11 @@
 	</div>
 </section>
 <!--====  End of Join-us  ====-->
+<script>
+	// My DOM
+	// temporary alert
+	let temporary_holvamp_discord = document.getElementById('holvamps-discord')
+	temporary_holvamp_discord.addEventListener('click', function(){
+		alert(`Holvamp Discord Segera ✨`);
+	});
+</script>

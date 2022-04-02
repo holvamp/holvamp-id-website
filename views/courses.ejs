@@ -32,37 +32,45 @@ Courses mengambil data dari Holvamp's API (courses)
       <section class="post-grid section pt-0">
       <div class="container">
         <div class="row">
-            <% courses.forEach(course => { %>
-              <div class="col-lg-4 col-md-4 col-sm-6">
-                <article class="post-sm">
-                  <!-- Post Image -->
-                  <div class="post-thumb">
-                    <a href="/courses/<%= course.label %>"><img class="w-100" src="/images/learns/<%= course.img %>" alt="<%= course.img %>"></a>		
-                  </div>
-                  <!-- Post Title -->
-                  <div class="post-title">
-                    <h3 style="font-weight: 500;"><a href="/courses/<%= course.label %>"><%= course.title %></a></h3>
-                  </div>
-                  <!-- Post Meta -->
-                  <li class="list-inline-item">
-                    <a href="/courses/<%= course.label %>"><cite>Oleh: <%= course.author %></cite></a>
-                  </li>
-                  <div class="post-meta">
-                    <ul class="list-inline post-tag">
-                      <!-- <li class="list-inline-item">
-                        <img src="" alt="author-thumb">
-                      </li> -->
-                    </ul>
-                  </div>
-                  <!-- Post Details -->
-                  <div class="post-details">
-                    <p style="color: #808080;">
-                      <%= course.desc %>
-                    </p>
-                  </div>
-                </article>
-              </div>
-            <% }) %>
+          <% courses.forEach(course => { %>
+            <div class="col-lg-4 col-md-6">
+              <!-- Post -->
+              <article class="post-sm">
+                <!-- Post Image -->
+                <div class="post-thumb">
+                  <a href="/courses/<%= course.label %>">
+                    <img class="w-100" src="/images/learns/<%= course.img %>" alt="<%= course.img %>">
+                  </a>		
+                </div>
+                <!-- Post Title -->
+                <div class="post-title">
+                  <h3 style="font-weight: 500;"> 
+                    <a href="/courses/<%= course.label %>"><%= course.title %></a>
+                  </h3>
+                </div>
+                <!-- Post Meta -->
+                <div class="post-meta">
+                  <ul class="list-inline post-tag">
+                    <!-- Author img -->
+                    <li class="list-inline-item">
+                      <img src="/images/learns/authors/<%= course.author[0].image %>" alt="<%= course.author[0].displayName %>">
+                    </li>
+                    <li class="list-inline-item">
+                      <a class="text-muted" href="/courses/<%= course.label %>"><%= course.author[0].displayName %></a>
+                    </li>
+                    <li class="list-inline-item">
+                    </li>
+                  </ul>
+                </div>
+                <!-- Post Details -->
+                <div class="post-details text-muted">
+                  <p>
+                    <%= course.desc %> 
+                  </p>
+                </div>
+              </article>
+            </div>
+          <% }) %>
         </div>
       </div>
     </section>
