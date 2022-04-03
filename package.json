@@ -1,0 +1,26 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Holvamp Website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Akbar Angkasa",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "cheerio": "^1.0.0-rc.10",
+    "codejar": "^3.5.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-ejs-layouts": "^2.5.1",
+    "mongodb": "^4.4.1",
+    "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "14.17.3"
+  }
+}
