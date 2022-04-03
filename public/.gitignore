@@ -1,8 +1,0 @@
-/node_modules
-npm-debug.log
-.DS_Store
-*.txt
-/*.env
-blogapi.txt
-holvamp-blog-coments-architecture.txt
-Procfile
