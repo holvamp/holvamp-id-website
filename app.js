@@ -1,13 +1,12 @@
 // Local Module
-const {blog_resource, blog_posts_data} = require('./utils/fetch-blog')
-const {contact_us_connection} = require('./utils/contact-us-process')
+const {contact_us_connection} = require('./utils/contact-us-process');
 // Express
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 4000;
 // axios
 const axios = require('axios')
-const API_KEY = 'AIzaSyATggcpPcDwU6CX8vd1nGdSARnYDjp0WQ8';
+const API_KEY = process.env.API_KEY;
 
 // Express view engine EJS.
 const expressLayouts = require('express-ejs-layouts');
